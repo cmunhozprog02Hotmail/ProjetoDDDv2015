@@ -1,11 +1,9 @@
 ﻿using ProjetoDDDv2015.Domain.Entities;
+using ProjetoDDDv2015.Infra.Data.EntityConfig;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoDDDv2015.Infra.Data.Contexto
 {
@@ -17,6 +15,8 @@ namespace ProjetoDDDv2015.Infra.Data.Contexto
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+
+        public DbSet<Produto> Produtos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,6 +33,9 @@ namespace ProjetoDDDv2015.Infra.Data.Contexto
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
+
+            modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new ProdutoConfiguration());
             
         }
         public override int SaveChanges()
