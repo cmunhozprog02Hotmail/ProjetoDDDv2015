@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -30,6 +31,6 @@ namespace ProjetoDDDv2015.MVC.ViewModels
 
         public bool Ativo { get; set; }
 
-        //public IEnumerable<Produto> Produtos { get; set; }
+        public IEnumerable<ProdutoViewModel> Produtos { get; set; }
     }
 }
